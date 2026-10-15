@@ -25,36 +25,44 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       cursor: pointer;
     }
-    .content {
-      margin-top: 40px;
-      font-size: 16px;
-      color: #333;
+    .main-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Study Dost AI</h1>
-  <p>Click below to start learning</p>
 
-  <button onclick="openAdAndStudy()" class="btn">Start Learning</button>
+  <div id="step1">
+    <h1>Welcome to Study Dost AI</h1>
+    <p>Click below to continue</p>
+    <!-- Yeh link ad kholegi -->
+    <a href="https://uplcm.com/4/12030229" target="_blank" onclick="showMainContent()" class="btn">Start Learning</a>
+  </div>
 
-  <div id="studyContent" class="content" style="display: none;">
-    <h2>📚 Welcome to Study Area</h2>
-    <p>Select your class and start studying freely.</p>
+  <div id="step2" class="main-box" style="display: none;">
+    <h2>📚 Study Portal</h2>
+    <p>Aapka ad trigger ho gaya hai. Ab aap niche diye gaye button se apne study material par ja sakte hain!</p>
+    <!-- Yahan apna asli study page ya AI tool ka link daal sakte ho -->
+    <a href="#" onclick="alert('Study material open ho raha hai!'); return false;" class="btn" style="background-color: #4CAF50;">Open AI Study Tools</a>
   </div>
 
   <script>
-    function openAdAndStudy() {
-      // 1. Ad ko external browser/tab mein force karo
-      var adUrl = "https://uplcm.com/4/12030229";
-      window.open(adUrl, '_system');
-      
-      // 2. App ke andar hi content turant dikha do
-      document.getElementById('studyContent').style.display = 'block';
+    function showMainContent() {
+      // Jaise hi user click karega, ad toh khulega hi, sath hi niche main content dikh jayega
+      setTimeout(function() {
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+      }, 500);
     }
   </script>
+
 </body>
 </html>
+
 
 
 
