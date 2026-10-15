@@ -1,10 +1,13 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Study Dost AI</title>
+
+  <!-- Monetag Verification Meta Tag -->
+  <meta name="monetag" content="9114a539c78ae6cd8175c3dfb3cc1707">
+
   <style>
     body {
       font-family: sans-serif;
@@ -24,42 +27,17 @@
       display: inline-block;
       margin-top: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-    .main-box {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
+  <h1>Welcome to Study Dost AI</h1>
+  <p>Click below to start learning</p>
 
-  <div id="step1">
-    <h1>Welcome to Study Dost AI</h1>
-    <p>Click below to continue</p>
-    <a href="https://uplcm.com/4/12030229" target="_blank" onclick="showMainContent()" class="btn">Start Learning</a>
-  </div>
-
-  <div id="step2" class="main-box" style="display: none;">
-    <h2>📚 Study Portal</h2>
-    <p>Ad trigger ho gaya hai! Ab aap niche wale button se apne study material par ja sakte hain.</p>
-    <a href="#" onclick="alert('Study material open ho raha hai!'); return false;" class="btn" style="background-color: #4CAF50;">Open AI Study Tools</a>
-  </div>
-
-  <script>
-    function showMainContent() {
-      setTimeout(function() {
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-      }, 500);
-    }
-  </script>
-
+  <a href="#" class="btn">Start Learning</a>
 </body>
 </html>
+
 
 
 
