@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Study Dost AI</title>
   <style>
@@ -23,6 +23,7 @@
       display: inline-block;
       margin-top: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
     }
     .content {
       margin-top: 40px;
@@ -35,13 +36,26 @@
   <h1>Welcome to Study Dost AI</h1>
   <p>Click below to start learning</p>
 
-  <a href="https://uplcm.com/4/12030229" onclick="window.open('https://uplcm.com/4/12030229', '_blank'); return false;" class="btn">Start Learning</a>
+  <button onclick="openAdAndStudy()" class="btn">Start Learning</button>
 
-  <div class="content">
-    <p>📚 Select your class and start studying freely.</p>
+  <div id="studyContent" class="content" style="display: none;">
+    <h2>📚 Welcome to Study Area</h2>
+    <p>Select your class and start studying freely.</p>
   </div>
+
+  <script>
+    function openAdAndStudy() {
+      // 1. Ad ko external browser/tab mein force karo
+      var adUrl = "https://uplcm.com/4/12030229";
+      window.open(adUrl, '_system');
+      
+      // 2. App ke andar hi content turant dikha do
+      document.getElementById('studyContent').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
+
 
 
 
