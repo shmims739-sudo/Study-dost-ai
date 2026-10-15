@@ -1,50 +1,295 @@
-html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Dost AI</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px 20px;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #007bff;
+        body {
+            background-color: #fcf9f2;
+            padding: 12px;
+            color: #333;
+        }
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        /* Top Header */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #d97706;
+        }
+        .logo-area img {
+            width: 28px;
+            height: 28px;
+        }
+        .lang-switch {
+            background: #f3f4f6;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Banner Card */
+        .banner {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border-radius: 20px;
+            padding: 18px;
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
+            box-shadow: 0 6px 20px rgba(255, 126, 95, 0.25);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .banner-text h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .banner-text p {
+            font-size: 12px;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+        .banner-icon {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 14px;
+            font-size: 24px;
+        }
+
+        /* Card Sections */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Category Pills (Primary, Middle, etc.) */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .cat-btn {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+        }
+        .cat-btn.active {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #b45309;
+        }
+
+        /* Class Grid 1-12 */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .class-num {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 8px 2px;
+            text-align: center;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
-            border: none;
         }
-        .btn:hover {
-            background-color: #0056b3;
+        .class-num.active {
+            background: #059669;
+            color: white;
+            border-color: #059669;
+        }
+
+        /* Subject Grid */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .subject-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .subject-item.active {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* AI Input Area */
+        textarea {
+            width: 100%;
+            height: 80px;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 13px;
+            outline: none;
+            resize: none;
+            margin-top: 10px;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .output-box {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to Study Dost AI</h1>
-    <p>Click below to start learning</p>
+    <div class="container">
+        <!-- Top Nav -->
+        <div class="top-nav">
+            <div class="logo-area">
+                🦉 Study Dost AI
+            </div>
+            <div class="lang-switch">EN | हिंदी</div>
+        </div>
 
-    <a href="javascript:void(0)" onclick="openAd()" class="btn">Start Learning</a>
+        <!-- Banner -->
+        <div class="banner">
+            <div class="banner-text">
+                <span style="font-size: 11px; background: rgba(255,255,255,0.3); padding: 2px 8px; border-radius: 10px;">Ready for Class 6</span>
+                <h2>Hello Dost! What are we learning?</h2>
+                <p>Ask any question in Maths, Science, etc.</p>
+            </div>
+            <div class="banner-icon">🦉</div>
+        </div>
+
+        <!-- Class Selection Card -->
+        <div class="card">
+            <div class="card-title">📚 Select Class (Class 1 to 12)</div>
+            
+            <div class="category-grid">
+                <div class="cat-btn">Primary (1–5)</div>
+                <div class="cat-btn active">Middle (6–8)</div>
+                <div class="cat-btn">High (9–10)</div>
+                <div class="cat-btn">Senior (11–12)</div>
+            </div>
+
+            <div class="class-grid" id="classGrid">
+                <!-- 1 to 12 buttons -->
+            </div>
+        </div>
+
+        <!-- Subject Selection Card -->
+        <div class="card">
+            <div class="card-title">📖 Select Subject</div>
+            <div class="subject-grid">
+                <div class="subject-item active" onclick="selectSub(this)">📐 Mathematics</div>
+                <div class="subject-item" onclick="selectSub(this)">🧪 Science</div>
+                <div class="subject-item" onclick="selectSub(this)">🔤 English</div>
+                <div class="subject-item" onclick="selectSub(this)">✍️ Hindi</div>
+            </div>
+
+            <textarea id="question" placeholder="Type your question here..."></textarea>
+            <button class="submit-btn" onclick="askAI()">Get Answer</button>
+            <div class="output-box" id="resultBox"></div>
+        </div>
+    </div>
 
     <script>
-        function openAd() {
-            // Ad ko background/new tab mein kholega
+        // Generate classes 1 to 12
+        const grid = document.getElementById('classGrid');
+        for(let i=1; i<=12; i++) {
+            const div = document.createElement('div');
+            div.className = `class-num ${i === 6 ? 'active' : ''}`;
+            div.innerText = `${i}`;
+            div.onclick = () => {
+                document.querySelectorAll('.class-num').forEach(c => c.classList.remove('active'));
+                div.classList.add('active');
+            };
+            grid.appendChild(div);
+        }
+
+        function selectSub(el) {
+            document.querySelectorAll('.subject-item').forEach(s => s.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function askAI() {
+            const q = document.getElementById('question').value.trim();
+            if(!q) {
+                alert("Please type a question!");
+                return;
+            }
+            // Monetag Ad Trigger
             window.open('https://uplcm.com/4/12030169', '_blank');
-            
-            // Yahan apne main learning page ya dashboard ka path daal do
-            // Agar same page par hi app hai toh ise aise hi rehne do
-            window.location.href = 'https://shmims739-sudo.github.io/Study-dost-ai/';
+
+            const res = document.getElementById('resultBox');
+            res.style.display = 'block';
+            res.innerHTML = `<b>Generating AI response for:</b> "${q}"`;
         }
     </script>
-
 </body>
-</html
+</html>
+
 
 
 
