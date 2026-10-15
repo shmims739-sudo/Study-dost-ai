@@ -1,25 +1,260 @@
-gap: 10px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Dost AI</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
-        .subject-item.active {
-            background: linear-gradient(135deg, #f97316, #ea580c);
-            color: white;
-            border-color: transparent;
+        body {
+            background-color: #fffaf0;
+            padding: 10px;
+            color: #2d3748;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        /* Top Navigation Header */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px 14px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            margin-bottom: 12px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .logo-box span {
+            background: #fff7ed;
+            color: #c2410c;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            border: 1px solid #ffedd5;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .icon-btn {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+        .lang-pill {
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #ff8008, #ffc837);
+            border-radius: 24px;
+            padding: 18px;
+            color: white;
+            box-shadow: 0 8px 24px rgba(255, 128, 8, 0.25);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .hero-text span {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .hero-text h1 {
+            font-size: 17px;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .hero-text p {
+            font-size: 11px;
+            opacity: 0.95;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        .owl-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #9a3412;
+            font-size: 9px;
+            font-weight: 800;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .owl-box span { font-size: 22px; }
+        .hero-features {
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Card Section */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #fef3c7;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .selected-badge {
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #ffedd5;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        /* Category Grid */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .cat-card {
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+            border-radius: 14px;
+            padding: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: #44403c;
+        }
+        .cat-card.active {
+            background: #fef9c3;
+            border-color: #fde047;
+            color: #854d0e;
+        }
+
+        /* Class Number Grid 1-12 */
+        .class-numbers {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .num-box {
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+            border-radius: 12px;
+            padding: 10px 2px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .num-box .n { font-size: 14px; font-weight: bold; display: block; color: #1c1917; }
+        .num-box .l { font-size: 9px; color: #78716c; }
+        .num-box.active {
+            background: #0d9488;
+            border-color: #0d9488;
+        }
+        .num-box.active .n, .num-box.active .l { color: white; }
+
+        .helper-text {
+            font-size: 11px;
+            color: #d97706;
+            background: #fffbeb;
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Subjects Grid */
+        .subj-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .subj-card {
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .subj-card.active {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-color: transparent;
+            color: white;
+        }
+        .subj-card.active .sub-sub { color: rgba(255,255,255,0.8); }
+        .sub-icon { font-size: 20px; }
+        .sub-name { font-size: 13px; font-weight: 700; color: #1c1917; }
+        .subj-card.active .sub-name { color: white; }
+        .sub-sub { font-size: 11px; color: #78716c; }
+
         /* AI Input Area */
+        .ai-input-box {
+            margin-top: 12px;
+        }
         textarea {
             width: 100%;
             height: 80px;
             border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 10px;
+            border-radius: 14px;
+            padding: 12px;
             font-size: 13px;
             outline: none;
             resize: none;
-            margin-top: 10px;
+            background: #f8fafc;
+            margin-bottom: 8px;
         }
         .submit-btn {
             width: 100%;
@@ -27,18 +262,18 @@ gap: 10px;
             color: white;
             border: none;
             padding: 12px;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 14px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 8px;
         }
-        .output-box {
-            margin-top: 10px;
-            padding: 10px;
+        .output-result {
+            margin-top: 12px;
+            padding: 12px;
             background: #f1f5f9;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 13px;
+            line-height: 1.5;
             display: none;
         }
     </style>
@@ -46,44 +281,158 @@ gap: 10px;
 <body>
 
     <div class="container">
-        <!-- Top Nav -->
+        <!-- Top Nav Bar -->
         <div class="top-nav">
-            <div class="logo-area">
-                🦉 Study Dost AI
+            <div class="logo-box">
+                🦉 Study Dost <span>AI</span>
             </div>
-            <div class="lang-switch">EN | हिंदी</div>
+            <div class="nav-icons">
+                <div class="icon-btn">T</div>
+                <div class="icon-btn">🔖</div>
+                <div class="lang-pill">EN &nbsp; हिंदी</div>
+                <div class="icon-btn">☰</div>
+            </div>
         </div>
 
         <!-- Banner -->
-        <div class="banner">
-            <div class="banner-text">
-                <span style="font-size: 11px; background: rgba(255,255,255,0.3); padding: 2px 8px; border-radius: 10px;">Ready for Class 6</span>
-                <h2>Hello Dost! What are we learning?</h2>
-                <p>Ask any question in Maths, Science, etc.</p>
+        <div class="hero-banner">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span id="bannerTag">✨ Ready for Class 6</span>
+                    <h1>Hello Dost! What are we learning today?</h1>
+                    <p>Type any school question in Maths, Science, or Social Studies. Get clear...</p>
+                </div>
+                <div class="owl-box">
+                    <span>🦉</span>
+                    STUDY DOST
+                </div>
             </div>
-            <div class="banner-icon">🦉</div>
+            <div class="hero-features">
+                <span>⚡ Simple Words</span>
+                <span>❤️ Daily Examples</span>
+                <span>🛡️ Free & Easy</span>
+            </div>
         </div>
 
         <!-- Class Selection Card -->
         <div class="card">
-            <div class="card-title">📚 Select Class (Class 1 to 12)</div>
-            
-            <div class="category-grid">
-                <div class="cat-btn">Primary (1–5)</div>
-                <div class="cat-btn active">Middle (6–8)</div>
-                <div class="cat-btn">High (9–10)</div>
-                <div class="cat-btn">Senior (11–12)</div>
+            <div class="card-header">
+                <span>📚 Select Class (Class 1 to 12)</span>
+                <span class="selected-badge" id="selectedBadgeText">Class 6</span>
             </div>
 
-            <div class="class-grid" id="classGrid">
-                <!-- 1 to 12 buttons -->
+            <div class="cat-grid">
+                <div class="cat-card" onclick="selectCat(this, 'Primary (1–5)')">🎒 Primary (1–5)</div>
+                <div class="cat-card active" onclick="selectCat(this, 'Middle (6–8)')">📖 Middle (6–8)</div>
+                <div class="cat-card" onclick="selectCat(this, 'High (9–10)')">🔬 High (9–10)</div>
+                <div class="cat-card" onclick="selectCat(this, 'Senior (11–12)')">🎓 Senior (11–12)</div>
+            </div>
+
+            <div class="class-numbers" id="classGrid">
+                <!-- 1 to 12 generated -->
+            </div>
+
+            <div class="helper-text" id="helperText">
+                ✨ Class 6–8 Level: Step-by-step logic, clear text...
             </div>
         </div>
 
         <!-- Subject Selection Card -->
         <div class="card">
-            <div class="card-title">📖 Select Subject</div>
-            <div class="subject-grid">
+            <div class="card-header">
+                <span>📖 Select Subject (7 Subjects)</span>
+            </div>
+            <div class="subj-grid">
+                <div class="subj-card active" onclick="selectSub(this, 'Mathematics')">
+                    <div class="sub-icon">📐</div>
+                    <div>
+                        <div class="sub-name">Mathema...</div>
+                        <div class="sub-sub">गणित</div>
+                    </div>
+                </div>
+                <div class="subj-card" onclick="selectSub(this, 'Science')">
+                    <div class="sub-icon">🧪</div>
+                    <div>
+                        <div class="sub-name">Science</div>
+                        <div class="sub-sub">विज्ञान</div>
+                    </div>
+                </div>
+                <div class="subj-card" onclick="selectSub(this, 'English')">
+                    <div class="sub-icon">🔤</div>
+                    <div>
+                        <div class="sub-name">English</div>
+                        <div class="sub-sub">अंग्रेजी</div>
+                    </div>
+                </div>
+                <div class="subj-card" onclick="selectSub(this, 'Hindi')">
+                    <div class="sub-icon">✍️</div>
+                    <div>
+                        <div class="sub-name">Hindi</div>
+                        <div class="sub-sub">हिंदी</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-input-box">
+                <textarea id="userQ" placeholder="Type your school question here..."></textarea>
+                <button class="submit-btn" onclick="askAI()">Get Answer</button>
+            </div>
+            <div class="output-result" id="outputRes"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentClass = 6;
+        let currentSub = 'Mathematics';
+
+        // Build 1 to 12 grid
+        const grid = document.getElementById('classGrid');
+        for(let i=1; i<=12; i++) {
+            const box = document.createElement('div');
+            box.className = `num-box ${i === 6 ? 'active' : ''}`;
+            box.innerHTML = `<span class="n">${i}</span><span class="l">Class</span>`;
+            box.onclick = () => {
+                document.querySelectorAll('.num-box').forEach(b => b.classList.remove('active'));
+                box.classList.add('active');
+                currentClass = i;
+                document.getElementById('selectedBadgeText').innerText = `Class ${i}`;
+                document.getElementById('bannerTag').innerText = `✨ Ready for Class ${i}`;
+                document.getElementById('helperText').innerText = `✨ Class ${i} Level: Step-by-step logic, clear text and easy explanation.`;
+            };
+            grid.appendChild(box);
+        }
+
+        function selectCat(el, name) {
+            document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function selectSub(el, sub) {
+            document.querySelectorAll('.subj-card').forEach(s => s.classList.remove('active'));
+            el.classList.add('active');
+            currentSub = sub;
+        }
+
+        function askAI() {
+            const q = document.getElementById('userQ').value.trim();
+            if(!q) {
+                alert("Please type a question!");
+                return;
+            }
+
+            // Monetag SmartLink Ad in new tab
+            window.open('https://uplcm.com/4/12030169', '_blank');
+
+            // Show AI Output
+            const out = document.getElementById('outputRes');
+            out.style.display = 'block';
+            out.innerHTML = `<b>Study Dost AI Answer (Class ${currentClass} - ${currentSub}):</b><br><br><b>Query:</b> "${q}"<br><br><b>Solution:</b> Here is the detailed curriculum-based explanation solved step-by-step for Class ${currentClass} students.`;
+        }
+    </script>
+</body>
+</html>
+
+
 
 
 
