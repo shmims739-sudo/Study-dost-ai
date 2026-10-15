@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,20 +40,17 @@
   <div id="step1">
     <h1>Welcome to Study Dost AI</h1>
     <p>Click below to continue</p>
-    <!-- Yeh link ad kholegi -->
     <a href="https://uplcm.com/4/12030229" target="_blank" onclick="showMainContent()" class="btn">Start Learning</a>
   </div>
 
   <div id="step2" class="main-box" style="display: none;">
     <h2>📚 Study Portal</h2>
-    <p>Aapka ad trigger ho gaya hai. Ab aap niche diye gaye button se apne study material par ja sakte hain!</p>
-    <!-- Yahan apna asli study page ya AI tool ka link daal sakte ho -->
+    <p>Ad trigger ho gaya hai! Ab aap niche wale button se apne study material par ja sakte hain.</p>
     <a href="#" onclick="alert('Study material open ho raha hai!'); return false;" class="btn" style="background-color: #4CAF50;">Open AI Study Tools</a>
   </div>
 
   <script>
     function showMainContent() {
-      // Jaise hi user click karega, ad toh khulega hi, sath hi niche main content dikh jayega
       setTimeout(function() {
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
